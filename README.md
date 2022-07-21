@@ -2,7 +2,7 @@
 
 Implementation of the **Formation Control** and **Collision Avoidance** for a swarm of Robots from the paper  
 
-"Decentralized Formation Control of a Swarm of Quadrotor Helicopters"
+"Decentralized Formation Control of a Swarm of Quadrotor Helicopters" (https://ieeexplore.ieee.org/document/8899628)
 
 The GIF below shows a swarm of 4 robots starting at random locations eventually leading to a Square Shape Formation
 
