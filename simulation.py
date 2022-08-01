@@ -19,6 +19,8 @@ SAFE_REGION = ROBOT_RADIUS+80
 K_p = 0.004
 ALPHA = 4
 BETA = 0.03
+K_tracking_control = 0.05
+
 
 square_template = np.array([[1,-1],[-1,-1],[1,1],[-1,1]])
 
@@ -33,7 +35,7 @@ screen.fill((255,255,255))
 
 dt = 0.2
 
-desired_position = np.random.randint(ROBOT_RADIUS,WINDOW_WIDTH-ROBOT_RADIUS,(1,2))
+desired_position = np.random.randint(2*ROBOT_RADIUS,WINDOW_WIDTH-(2*ROBOT_RADIUS),(1,2))
 old_positions = np.copy(positions)
 
 while True:
@@ -68,7 +70,14 @@ while True:
   
     
     repulsive_velocity = np.sum(pairwise_repulsive_velocities,axis=1)
-    displacement = (new_velocity+repulsive_velocity)*dt
+   
+    centroid = 1.0/NUM_ROBOTS * np.sum(positions,axis=0,keepdims=True)
+    desired_position_velocity = K_tracking_control * ( desired_position - centroid)
+    
+    tracking_control_velocity = np.repeat(desired_position_velocity,NUM_ROBOTS,axis=0)
+
+    displacement = (new_velocity+repulsive_velocity+tracking_control_velocity)*dt   
+
     positions = positions + displacement
 
 
