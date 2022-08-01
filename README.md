@@ -10,5 +10,6 @@ The GIF below shows a swarm of 4 robots starting at random locations eventually 
 
 ### TODO
 - [ ]  Add Comments 
-- [ ]  Add Codes for rotation and tracking control specified in the paper
+- [ ]  Add Code for Rotation Control as specified in the paper
+- [X]  Add Codes for Tracking control as specified in the paper
 - [ ]  Perform simulation using Webots/Gazebo etc.
